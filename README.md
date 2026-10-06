@@ -217,6 +217,6 @@ If you use this work, please cite our paper, **“StochLOB: Heavy-Tailed Score M
                Habibnia, Ali},
   booktitle = {NeurIPS 2026 Workshop on AI for Stochastic Dynamics},
   year      = {2026},
-  url       = {}
+  url       = {https://openreview.net/forum?id=V5TaLvZ5Nn}
 }
 ```
