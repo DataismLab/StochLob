@@ -13,9 +13,9 @@ The repository contains research implementations, configuration files and script
 
 A validated, paper-specific release has not yet been designated. The commands in the main README demonstrate individual training and evaluation workflows; they are not a complete table-by-table reproduction manifest. Record the exact code revision used for each reproduction rather than relying on a moving branch name.
 
-## Funding and computational resources
+## Funding
 
-This study received no project-specific research funding. All model training and computational experiments were conducted at the participating institutions in Iran. These statements describe the reported study; the location of this GitHub repository does not identify where its experiments were run.
+This study received no project-specific research funding.
 
 ## Data sources and access
 
