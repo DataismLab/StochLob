@@ -8,7 +8,7 @@
 
 This repository contains research code and configuration files supporting the StochLOB paper, together with additional experimental pipelines. The manuscript defines the experiments and datasets reported in the paper.
 
-**Funding and computational resources.** This study received no project-specific research funding. Computational resources were provided by the Dataism Laboratory for Quantitative Finance (DLQF). No computing resources from the authors' other affiliated institutions were used. The analyses used publicly available market data; access to the project's stored data copies is described separately below.
+**Funding and computational resources.** This study received no project-specific research funding. No computing resources from Virginia Tech or the authors' other affiliated universities were used in this study. The analyses used publicly available market data; access to the project's stored data copies is described separately below.
 
 See [Reproducibility and provenance](REPRODUCIBILITY.md) for the scope of the replication materials, data-access conditions and attribution. A validated, paper-specific release has not yet been designated.
 
