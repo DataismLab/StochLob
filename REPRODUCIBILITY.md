@@ -5,7 +5,6 @@
 **StochLOB: Heavy-Tailed Score Matching for Robust Limit Order Book Trend Prediction**
 
 - [arXiv preprint](https://arxiv.org/abs/2610.21081)
-- [NeurIPS 2026 STODY workshop submission](https://openreview.net/forum?id=V5TaLvZ5Nn)
 
 ## Scope of the replication materials
 
@@ -13,9 +12,9 @@ The repository contains research implementations, configuration files and script
 
 A validated, paper-specific release has not yet been designated. The commands in the main README demonstrate individual training and evaluation workflows; they are not a complete table-by-table reproduction manifest. Record the exact code revision used for each reproduction rather than relying on a moving branch name.
 
-## Funding
+## Funding and computational resources
 
-This study received no project-specific research funding.
+This study received no project-specific research funding. Computational resources were provided by the Dataism Laboratory for Quantitative Finance (DLQF). No computing resources from the authors' other affiliated institutions were used.
 
 ## Data sources and access
 
