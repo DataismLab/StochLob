@@ -2,27 +2,37 @@
 
 **Heavy-Tailed Score Matching for Robust Limit Order Book Trend Prediction**
 
-[Paper and workshop submission](https://openreview.net/forum?id=V5TaLvZ5Nn) · [Data documentation](docs/data/README.md) · [Model documentation](docs/models/README.md)
+[Preprint](https://arxiv.org/abs/2610.21081) · [Workshop submission](https://openreview.net/forum?id=V5TaLvZ5Nn) · [Data documentation](docs/data/README.md) · [Model documentation](docs/models/README.md)
 
 🎉 **Our paper, StochLOB, has been accepted for an oral presentation at the NeurIPS 2026 Workshop on AI for Stochastic Dynamics!**
 
-**StochLOB trains diffusion models that are, at the same time, discriminative and
-generative** — a single backbone learns to *denoise* a limit-order-book (LOB) window
-(the generative objective) **and** to *classify* its short-term price direction (the
-discriminative objective), sharing one representation. The generative diffusion task
-regularises the encoder so the features the classifier reuses are richer than plain
-supervised training would produce; at inference only the cheap classification path
-runs.
+## Paper and research resources
 
-The project forecasts a 3-class LOB **trend** (`down / flat / up`) on crypto data from
-**Binance** (USDT pairs) and **Coinbase** (Iranian Toman pairs), and ships a suite of
-established **discriminative baselines** alongside the joint models for comparison.
+This repository contains research code and configuration files supporting the StochLOB paper, together with additional experimental pipelines. The manuscript defines the experiments and datasets reported in the paper.
+
+**Funding and computation.** This study received no project-specific research funding. All model training and computational experiments were conducted at the participating institutions in Iran. The analyses used publicly available market data; access to the project's stored data copies is described separately below.
+
+See [Reproducibility and provenance](REPRODUCIBILITY.md) for the scope of the replication materials, data-access conditions and attribution. A validated, paper-specific release has not yet been designated.
+
+## Overview
+
+StochLOB studies training-only score matching for robust limit-order-book (LOB)
+trend prediction. A shared representation is learned using classification and
+auxiliary score-matching losses. Jump-Levy and clipped alpha-stable corruption
+provide the heavy-tailed variants, while Gaussian corruption provides a control.
+At inference, the predictor uses a single deterministic classification path.
+
+The paper reports a Coinbase crypto benchmark and an exploratory Feishu Chinese
+A-share transfer study. This repository also includes Binance configurations,
+additional model families and legacy identifiers such as `btcirt`. The manuscript's
+data section and appendices define the reported datasets and protocols; configuration
+names alone should not be used to establish exchange or asset provenance.
 
 - **Joint generative–discriminative models:** JointDiT (Diffusion Transformer, with
   five training objectives — DDPM, consistency, t-EDM, drift, Lévy — plus a two-phase
   probe), JumpGateLOB (jump-diffusion score matching + noise-consistent classification,
-  feature-only inference), AlphaStableLOB (the same trunk with a genuine α-stable,
-  power-law-tailed forward process), and GaussGateLOB (the same trunk again with plain
+  feature-only inference), AlphaStableLOB (the same trunk with clipped α-stable
+  scale-mixture corruption), and GaussGateLOB (the same trunk again with plain
   Gaussian noise and the closed-form score — the control the two heavy-tailed kernels
   are measured against).
 - **Discriminative baselines:** DeepLOB, CTABL, BiN-CTABL, TLOB, DLA, Axial-LOB.
@@ -76,9 +86,12 @@ uv run dvc pull      # download data/ from the remote
 uv run dvc push      # upload new/changed data
 ```
 
-> **DVC credentials:** the R2 access keys are **not** stored in the repo — they belong
-> in `.dvc/config.local` (git-ignored). **Contact the team** to obtain the
-> credentials, drop them into `.dvc/config.local`, then run `uv run dvc pull`.
+> **Data access and credentials:** publicly available source data and access to the
+> project's stored DVC copies are separate matters. Access to the project remote is
+> subject to permission and applicable source-data terms. If access is approved,
+> keep your authorized credentials in `.dvc/config.local` (git-ignored). Do not
+> commit or share account credentials. Contact the project team about data sources
+> and permitted access options.
 
 If you have raw exchange dumps but no resampled parquet, regenerate them:
 
@@ -215,7 +228,7 @@ data/             DVC-tracked (not in git)
 
 Please use [GitHub Issues](https://github.com/DataismLab/StochLob/issues) for reproducibility questions and bug reports. Include the config path, command, dependency environment, and relevant error message. Do not post credentials or private data.
 
-For project enquiries and data-access requests, contact [Ali Habibnia (@AliHabibnia)](https://github.com/AliHabibnia). Data availability and permission to redistribute a dataset must be confirmed separately from the code's MIT licence.
+For project enquiries and questions about data sources and permitted access options, contact [Ali Habibnia (@AliHabibnia)](https://github.com/AliHabibnia). Data availability and permission to redistribute a dataset must be confirmed separately from the code's MIT licence.
 
 ## How to cite
 
