@@ -25,8 +25,9 @@ feat_t := (raw_t - mean_t) / std_t
 The normalised matrix is written once to a numpy **memmap** and reused. The cache key
 encodes `symbol`, level count, feature mode and `norm_window`
 (`{SYMBOL}_n{n}_{mode}_roll{window}_{tag}`), so changing any of them rebuilds the
-cache rather than silently reusing a stale one. The memmap is paged lazily, so RAM
-scales with `batch_size × T_past × F`, not dataset size.
+cache rather than silently reusing a stale one. During training, the memmap is paged
+lazily. Initial cache construction materialises the feature arrays and rolling
+statistics in RAM, so its memory requirements grow with the dataset size.
 
 ## Chronological split — `crypto/dataset.py`
 
@@ -38,8 +39,19 @@ val   : [train_end,    val_end)            val_frac                (default 0.15
 test  : [val_end,      N)                  remainder               (default 0.15)
 ```
 
-Both `alpha` (label calibration) and the rolling normaliser are frozen from the
-training region, so val/test never inform preprocessing.
+The rolling normaliser continues to update during validation and testing. For each
+bin it uses only past and present observations, including observations already seen
+in the current split. Its statistics are not frozen at the end of training.
+
+Label-threshold calibration is a separate step in `crypto/labels.py`. In the current
+implementation, automatic calibration uses `trend[:train_end]`; the final `k - 1`
+positions in that slice can depend on validation-period prices. This boundary issue
+should be resolved before describing calibration as strictly training-data-only.
+
+The dataset builder also excludes windows near each split end: a start is retained
+only when `centre + label_k < hi`, where `centre` is the last input bin and `hi` is
+the split boundary. This keeps the forward label horizon inside that split. It does
+not by itself correct the separate threshold-calibration issue above.
 
 ## Sliding windows
 
@@ -54,8 +66,8 @@ A window is `T_past` consecutive bins with stride `stride`:
 - **Invalid labels** — windows whose label bin is `-1` (the first/last `k` bins) are
   dropped.
 
-The per-split window counts and the realised `down / flat / up` balance are logged at
-the start of every run and stored in the run metadata.
+The run metadata stores the window counts for all three splits. Its `class_balance`
+field currently records the training split balance.
 
 ## Key config knobs
 
