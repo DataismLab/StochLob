@@ -1,6 +1,6 @@
 # Data
 
-Penny trains on **limit-order-book (LOB) snapshots** from two crypto exchanges, plus
+StochLOB trains on **limit-order-book (LOB) snapshots** from two crypto exchanges, plus
 a separate Chinese A-share equity dataset (Feishu), and turns them into fixed-length
 windows with a 3-class trend label (`down / flat / up`). Everything downstream of the
 raw dumps is deterministic and config-driven, so a run is fully reproducible from a
@@ -75,7 +75,7 @@ The full column layout for both modes is documented in
 ### 3. Labels — `crypto/labels.py`
 The DeepLOB smoothed-mid trend label: compare the mean mid over the next `k` bins to
 the mean mid over the previous `k` bins, threshold the ratio at `±alpha` into
-`down / flat / up`. `alpha` is **calibrated on the training split only** to the
+`down / flat / up`. `alpha` is **calibrated using training-indexed trend values** to the
 33.3rd percentile of `|trend_ratio|`, giving roughly balanced classes. Full
 definition in **[labels.md](labels.md)**.
 
@@ -88,8 +88,9 @@ definition in **[labels.md](labels.md)**.
 - **Normalisation** — features are z-scored with a **causal trailing rolling
   window** (`norm_window`, default 2000 bins): bin `t` uses stats from
   `[t − norm_window + 1, t]` only — never the future. This removes the intra-day
-  lookahead of naive per-day scaling. `alpha` and the normaliser are both frozen
-  from the training region.
+  lookahead of naive per-day scaling. Rolling statistics continue to update
+  causally during validation and testing. Label-threshold calibration is separate;
+  see the boundary caveat in [windows-and-normalization.md](windows-and-normalization.md).
 - **Cache** — the normalised feature matrix is written once to a numpy memmap and
   reused on subsequent runs (keyed by symbol, level count, feature mode and
   `norm_window`).
