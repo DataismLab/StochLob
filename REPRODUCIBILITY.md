@@ -14,7 +14,7 @@ A validated, paper-specific release has not yet been designated. The commands in
 
 ## Funding and computational resources
 
-This study received no project-specific research funding. Computational resources were provided by the Dataism Laboratory for Quantitative Finance (DLQF). No computing resources from the authors' other affiliated institutions were used.
+This study received no project-specific research funding. No computing resources from Virginia Tech or the authors' other affiliated universities were used in this study.
 
 ## Data sources and access
 
