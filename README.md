@@ -2,15 +2,13 @@
 
 **Heavy-Tailed Score Matching for Robust Limit Order Book Trend Prediction**
 
-[Preprint](https://arxiv.org/abs/2610.21081) · [Workshop submission](https://openreview.net/forum?id=V5TaLvZ5Nn) · [Data documentation](docs/data/README.md) · [Model documentation](docs/models/README.md)
-
-🎉 **Our paper, StochLOB, has been accepted for an oral presentation at the NeurIPS 2026 Workshop on AI for Stochastic Dynamics!**
+[Preprint](https://arxiv.org/abs/2610.21081) · [Data documentation](docs/data/README.md) · [Model documentation](docs/models/README.md)
 
 ## Paper and research resources
 
 This repository contains research code and configuration files supporting the StochLOB paper, together with additional experimental pipelines. The manuscript defines the experiments and datasets reported in the paper.
 
-**Funding.** This study received no project-specific research funding. The analyses used publicly available market data; access to the project's stored data copies is described separately below.
+**Funding and computational resources.** This study received no project-specific research funding. Computational resources were provided by the Dataism Laboratory for Quantitative Finance (DLQF). No computing resources from the authors' other affiliated institutions were used. The analyses used publicly available market data; access to the project's stored data copies is described separately below.
 
 See [Reproducibility and provenance](REPRODUCIBILITY.md) for the scope of the replication materials, data-access conditions and attribution. A validated, paper-specific release has not yet been designated.
 
@@ -232,10 +230,10 @@ For project enquiries and questions about data sources and permitted access opti
 
 ## How to cite
 
-If you use this work, please cite our paper, **“StochLOB: Heavy-Tailed Score Matching for Robust Limit Order Book Trend Prediction,”** accepted for an oral presentation at the **NeurIPS 2026 Workshop on AI for Stochastic Dynamics (STODY)**.
+If you use this work, please cite the preprint, **“StochLOB: Heavy-Tailed Score Matching for Robust Limit Order Book Trend Prediction.”**
 
 ```bibtex
-@inproceedings{abolghasemi2026stochlob,
+@misc{abolghasemi2026stochlob,
   title     = {{StochLOB}: Heavy-Tailed Score Matching for Robust Limit Order Book Trend Prediction},
   author    = {Abolghasemi, Arshia and
                Tavakoli, Seyed Reza and
@@ -248,8 +246,9 @@ If you use this work, please cite our paper, **“StochLOB: Heavy-Tailed Score M
                Alirezaei, Marjan and
                Aminian, Gholamali and
                Habibnia, Ali},
-  booktitle = {NeurIPS 2026 Workshop on AI for Stochastic Dynamics},
   year      = {2026},
-  url       = {https://openreview.net/forum?id=V5TaLvZ5Nn}
+  eprint    = {2610.21081},
+  archivePrefix = {arXiv},
+  url       = {https://arxiv.org/abs/2610.21081}
 }
 ```
