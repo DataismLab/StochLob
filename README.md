@@ -1,8 +1,12 @@
-# Penny
+# StochLOB
+
+**Heavy-Tailed Score Matching for Robust Limit Order Book Trend Prediction**
+
+[Paper and workshop submission](https://openreview.net/forum?id=V5TaLvZ5Nn) · [Data documentation](docs/data/README.md) · [Model documentation](docs/models/README.md)
 
 🎉 **Our paper, StochLOB, has been accepted for an oral presentation at the NeurIPS 2026 Workshop on AI for Stochastic Dynamics!**
 
-**Penny trains diffusion models that are, at the same time, discriminative and
+**StochLOB trains diffusion models that are, at the same time, discriminative and
 generative** — a single backbone learns to *denoise* a limit-order-book (LOB) window
 (the generative objective) **and** to *classify* its short-term price direction (the
 discriminative objective), sharing one representation. The generative diffusion task
@@ -25,6 +29,8 @@ established **discriminative baselines** alongside the joint models for comparis
 
 See **[docs/models](docs/models/README.md)** for every model, **[docs/data](docs/data/README.md)**
 for the data pipeline, and **[docs/xai](docs/xai/README.md)** for the explainability layer.
+
+Some implementation identifiers retain the name `Penny`, including `$PENNY_SEED` and the DVC bucket `penny`. Keep these identifiers unchanged when following the commands below.
 
 ## Architecture and workflow
 
@@ -82,6 +88,14 @@ uv run python scripts/resample_coinbase.py --levels 20
 ```
 
 Details: [docs/data](docs/data/README.md).
+
+## Reproducing experiments
+
+The commands below show how to train individual configurations and collect results across seeds. They are usage examples, rather than a table-by-table reproduction manifest for the paper.
+
+For a comparable run, retain the exact config, data version, split, label horizon, seeds, dependency lockfile, and checkpoint selection rule. Save the generated run metadata alongside the results. See [Seed sweeps](#seed-sweeps-mean--std) for aggregation and the distinction between seed variability and statistical uncertainty.
+
+Data access is required before these training commands can run. The repository does not currently provide a self-contained sample-data demo.
 
 ## Train a model
 
@@ -196,6 +210,12 @@ src/
 docs/             this documentation
 data/             DVC-tracked (not in git)
 ```
+
+## Contact and contributions
+
+Please use [GitHub Issues](https://github.com/DataismLab/StochLob/issues) for reproducibility questions and bug reports. Include the config path, command, dependency environment, and relevant error message. Do not post credentials or private data.
+
+For project enquiries and data-access requests, contact [Ali Habibnia (@AliHabibnia)](https://github.com/AliHabibnia). Data availability and permission to redistribute a dataset must be confirmed separately from the code's MIT licence.
 
 ## How to cite
 
