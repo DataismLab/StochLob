@@ -10,7 +10,7 @@
 
 This repository contains research code and configuration files supporting the StochLOB paper, together with additional experimental pipelines. The manuscript defines the experiments and datasets reported in the paper.
 
-**Funding and computation.** This study received no project-specific research funding. All model training and computational experiments were conducted at the participating institutions in Iran. The analyses used publicly available market data; access to the project's stored data copies is described separately below.
+**Funding.** This study received no project-specific research funding. The analyses used publicly available market data; access to the project's stored data copies is described separately below.
 
 See [Reproducibility and provenance](REPRODUCIBILITY.md) for the scope of the replication materials, data-access conditions and attribution. A validated, paper-specific release has not yet been designated.
 
