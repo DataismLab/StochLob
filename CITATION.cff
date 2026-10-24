@@ -25,10 +25,10 @@ authors:
   - family-names: "Habibnia"
     given-names: "Ali"
 repository-code: "https://github.com/DataismLab/StochLob"
-url: "https://openreview.net/forum?id=V5TaLvZ5Nn"
+url: "https://arxiv.org/abs/2610.21081"
 license: MIT
 preferred-citation:
-  type: conference-paper
+  type: article
   title: "StochLOB: Heavy-Tailed Score Matching for Robust Limit Order Book Trend Prediction"
   authors:
     - family-names: "Abolghasemi"
@@ -53,6 +53,6 @@ preferred-citation:
       given-names: "Gholamali"
     - family-names: "Habibnia"
       given-names: "Ali"
-  collection-title: "NeurIPS 2026 Workshop on AI for Stochastic Dynamics"
+  journal: "arXiv"
   year: 2026
-  url: "https://openreview.net/forum?id=V5TaLvZ5Nn"
+  url: "https://arxiv.org/abs/2610.21081"
